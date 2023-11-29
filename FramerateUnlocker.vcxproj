@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{22620dba-5775-44e7-812b-f67240258a83}</ProjectGuid>
+    <RootNamespace>FramerateUnlocker</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <VcpkgTriplet Condition="'$(Platform)'=='x64'">x64-windows-static</VcpkgTriplet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetExt>.asi</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.asi</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;FRAMERATEUNLOCKER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;FRAMERATEUNLOCKER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;FRAMERATEUNLOCKER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>L:\NeedForSpeedASIs\NFS-Rivals-Framerate-Unlocker\FramerateUnlocker\Frostbite;L:\NeedForSpeedASIs\NFS-Rivals-Framerate-Unlocker\FramerateUnlocker\Frostbite\Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)$(TargetExt)" "L:\Games\Need for Speed(TM) Rivals\Scripts" /s /i /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;FRAMERATEUNLOCKER_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>.\vcpkg\installed\x64-windows\include;.\safetyhook;.\util;.\Frostbite;.\Frostbite\Engine;.\Frostbite\External\EA\EAAudioCore\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableUAC>false</EnableUAC>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)$(TargetExt)" "L:\Games\Need for Speed(TM) Rivals\Scripts" /s /i /y</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Math\LinearTransform.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Math\Math.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Math\Quat.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Math\Vec.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Math\Vec2.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Math\Vec3.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Math\Vec4.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Memory\MemoryArena.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Pattern\WeakPtr.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Reflection\DataContainer.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Reflection\PropertyReader.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Reflection\PropertyWriter.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Reflection\Reflection.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Reflection\String.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Resource\BaseTypes.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Resource\BaseTypesDefs.h" />
+    <ClInclude Include="Frostbite\Engine\Core\Types.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\Component.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\Entity.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\EntityBusDataDefs.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\EntityBus\EntityBusPeer.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\EntityData.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\EntityDataDefs.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\EntityFactory.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\Material\MaterialGridData.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\MiscEntities.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\MiscEntityData.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\SimpleUpdater.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\SimpleUpdaterBase.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\UpdateInfo.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\UpdateManager.h" />
+    <ClInclude Include="Frostbite\Engine\Entity\Updater.h" />
+    <ClInclude Include="Frostbite\Engine\Game\Client\Core\Entity\ClientGameComponentEntity.h" />
+    <ClInclude Include="Frostbite\Engine\Game\Client\Gameplay\Character\Components\ClientAntAnimatableComponent.h" />
+    <ClInclude Include="Frostbite\Engine\Game\Common\Core\Entity\GameComponentEntity.h" />
+    <ClInclude Include="Frostbite\Engine\Game\Common\Gameplay\Camera\Camera.h" />
+    <ClInclude Include="Frostbite\Engine\Game\Common\Gameplay\Camera\CameraEffects\FovEffect.h" />
+    <ClInclude Include="Frostbite\Engine\Game\Common\Gameplay\Camera\CameraManager.h" />
+    <ClInclude Include="Frostbite\Engine\Game\Common\Gameplay\Camera\TargetCamera.h" />
+    <ClInclude Include="Frostbite\Engine\Game\Shared\WeaponDataDefs.h" />
+    <ClInclude Include="Frostbite\Engine\Physics\Vehicle\Common\IWheel.h" />
+    <ClInclude Include="Frostbite\Engine\Physics\Vehicle\EAGR\IRaceVehicle.h" />
+    <ClInclude Include="Frostbite\Engine\Physics\Vehicle\EAGR\IRaceWheel.h" />
+    <ClInclude Include="Frostbite\Engine\Physics\Vehicle\EAGR\WheelNFS.h" />
+    <ClInclude Include="Frostbite\Extension\Cinebot\CinebotCamera.h" />
+    <ClInclude Include="Frostbite\Extension\Cinebot\CinebotCameraShot.h" />
+    <ClInclude Include="Frostbite\Extension\Cinebot\ICinebotDirector.h" />
+    <ClInclude Include="Frostbite\Extension\Rpc\RpcDeclaration.h" />
+    <ClInclude Include="Frostbite\Extension\Rpc\RpcTypeTraits.h" />
+    <ClInclude Include="Frostbite\External\EA\EAAudioCore\include\EAAudioCore\base.h" />
+    <ClInclude Include="Frostbite\External\EA\EAAudioCore\include\EAAudioCore\plugins\GinsuPlayer.h" />
+    <ClInclude Include="Frostbite\Race\Client\UI\Entities\Screen\ClientUIScreenEffectEntity.h" />
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\ClientRaceVehicleEntity.h" />
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientAnimatedDriverComponent.h" />
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientFxComponent.h" />
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceLightComponent.h" />
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceVehicleComponent.h" />
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceVehicleComponentSimulation.h" />
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceWheelComponentSimulation.h" />
+    <ClInclude Include="Frostbite\Race\Client\Weapon\ClientVehicleWeaponEntity.h" />
+    <ClInclude Include="Frostbite\Race\Common\Core\Proxy\ProxyPropertyWriter.h" />
+    <ClInclude Include="Frostbite\Race\Common\Weapon\VehicleWeaponEntityData.h" />
+    <ClInclude Include="Frostbite\Race\Common\Weapon\VehicleWeaponEntityDataDefs.h" />
+    <ClInclude Include="Frostbite\Race\Common\Weapon\VehicleWeaponType.h" />
+    <ClInclude Include="Frostbite\Race\Common\Weapon\VehicleWeaponTypeAsset.h" />
+    <ClInclude Include="Frostbite\Race\Common\Weapon\VehicleWeaponUpgradable.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="safetyhook\safetyhook.hpp" />
+    <ClInclude Include="safetyhook\Zydis.h" />
+    <ClInclude Include="util\memoryutils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="Frostbite\Engine\Core\Math\LinearTransform.cpp" />
+    <ClCompile Include="Frostbite\Engine\Core\Math\Vec.cpp" />
+    <ClCompile Include="Frostbite\Engine\Core\Math\Vec3.cpp" />
+    <ClCompile Include="Frostbite\Engine\Core\Memory\MemoryArena.cpp" />
+    <ClCompile Include="Frostbite\Engine\Entity\MiscEntities.cpp" />
+    <ClCompile Include="Frostbite\Engine\Entity\UpdateManager.cpp" />
+    <ClCompile Include="Frostbite\Engine\Game\Common\Gameplay\Camera\CameraManager.cpp" />
+    <ClCompile Include="Frostbite\Engine\Physics\Vehicle\EAGR\WheelNFS.cpp" />
+    <ClCompile Include="Frostbite\Extension\Cinebot\CinebotCamera.cpp" />
+    <ClCompile Include="Frostbite\External\EA\EAAudioCore\source\plugins\GinsuPlayer.cpp" />
+    <ClCompile Include="Frostbite\Race\Client\UI\Entities\Screen\ClientUIScreenEffectEntity.cpp" />
+    <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientAnimatedDriverComponent.cpp" />
+    <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientFxComponent.cpp" />
+    <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceLightComponent.cpp" />
+    <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceVehicleComponent.cpp" />
+    <ClCompile Include="Frostbite\Race\Client\Weapon\ClientVehicleWeaponEntity.cpp" />
+    <ClCompile Include="Frostbite\Race\Common\Core\Proxy\ProxyPropertyWriter.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="safetyhook\safetyhook.cpp" />
+    <ClCompile Include="safetyhook\Zydis.c" />
+    <ClCompile Include="util\memoryutils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Frostbite\Engine\Core\Math\SSE\LinearTransform_SSE.inl" />
+    <None Include="Frostbite\Engine\Core\Math\SSE\Quat_SSE.inl" />
+    <None Include="Frostbite\Engine\Core\Math\SSE\Vec3_SSE.inl" />
+    <None Include="Frostbite\Engine\Core\Math\SSE\Vec_SSE.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="asm\MiscPatches.asm" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
+  </ImportGroup>
+</Project>
