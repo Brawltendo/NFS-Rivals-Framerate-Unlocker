@@ -7,38 +7,38 @@ namespace fb
 
 #pragma region __m128 Operator Overloads
 
-_forceinline Vec  operator +   (const Vec& l, const Vec& r) { return _mm_add_ps(l, r); }
-_forceinline Vec  operator -   (const Vec& l, const Vec& r) { return _mm_sub_ps(l, r); }
-_forceinline Vec  operator *   (const Vec& l, const Vec& r) { return _mm_mul_ps(l, r); }
-_forceinline Vec  operator /   (const Vec& l, const Vec& r) { return _mm_div_ps(l, r); }
-_forceinline Vec& operator +=  (Vec& l, const Vec& r) { l = l + r; return l; }
-_forceinline Vec& operator -=  (Vec& l, const Vec& r) { l = l - r; return l; }
-_forceinline Vec& operator *=  (Vec& l, const Vec& r) { l = l * r; return l; }
-_forceinline Vec& operator /=  (Vec& l, const Vec& r) { l = l / r; return l; }
-_forceinline Vec  operator &   (const Vec& l, const Vec& r) { return _mm_and_ps(l, r); }
-_forceinline Vec  operator |   (const Vec& l, const Vec& r) { return _mm_or_ps(l, r); }
-_forceinline Vec  operator ^   (const Vec& l, const Vec& r) { return _mm_xor_ps(l, r); }
-_forceinline Vec  operator <   (const Vec& l, const Vec& r) { return _mm_cmplt_ps(l, r); }
-_forceinline Vec  operator >   (const Vec& l, const Vec& r) { return _mm_cmpgt_ps(l, r); }
-_forceinline Vec  operator <=  (const Vec& l, const Vec& r) { return _mm_cmple_ps(l, r); }
-_forceinline Vec  operator >=  (const Vec& l, const Vec& r) { return _mm_cmpge_ps(l, r); }
-_forceinline Vec  operator ==  (const Vec& l, const Vec& r) { return _mm_cmpeq_ps(l, r); }
-_forceinline Vec  operator +   (const Vec& l, const float r) { return _mm_add_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator -   (const Vec& l, const float r) { return _mm_sub_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator *   (const Vec& l, const float r) { return _mm_mul_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator /   (const Vec& l, const float r) { return _mm_div_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec& operator +=  (Vec& l, const float r) { l = l + r; return l; }
-_forceinline Vec& operator -=  (Vec& l, const float r) { l = l - r; return l; }
-_forceinline Vec& operator *=  (Vec& l, const float r) { l = l * r; return l; }
-_forceinline Vec& operator /=  (Vec& l, const float r) { l = l / r; return l; }
-_forceinline Vec  operator &   (const Vec& l, const float r) { return _mm_and_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator |   (const Vec& l, const float r) { return _mm_or_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator ^   (const Vec& l, const float r) { return _mm_xor_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator <   (const Vec& l, const float r) { return _mm_cmplt_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator >   (const Vec& l, const float r) { return _mm_cmpgt_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator <=  (const Vec& l, const float r) { return _mm_cmple_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator >=  (const Vec& l, const float r) { return _mm_cmpge_ps(l, _mm_set1_ps(r)); }
-_forceinline Vec  operator ==  (const Vec& l, const float r) { return _mm_cmpeq_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator +   (const Vec& l, const Vec& r) { return _mm_add_ps(l, r); }
+__forceinline Vec  operator -   (const Vec& l, const Vec& r) { return _mm_sub_ps(l, r); }
+__forceinline Vec  operator *   (const Vec& l, const Vec& r) { return _mm_mul_ps(l, r); }
+__forceinline Vec  operator /   (const Vec& l, const Vec& r) { return _mm_div_ps(l, r); }
+__forceinline Vec& operator +=  (Vec& l, const Vec& r) { l = l + r; return l; }
+__forceinline Vec& operator -=  (Vec& l, const Vec& r) { l = l - r; return l; }
+__forceinline Vec& operator *=  (Vec& l, const Vec& r) { l = l * r; return l; }
+__forceinline Vec& operator /=  (Vec& l, const Vec& r) { l = l / r; return l; }
+__forceinline Vec  operator &   (const Vec& l, const Vec& r) { return _mm_and_ps(l, r); }
+__forceinline Vec  operator |   (const Vec& l, const Vec& r) { return _mm_or_ps(l, r); }
+__forceinline Vec  operator ^   (const Vec& l, const Vec& r) { return _mm_xor_ps(l, r); }
+__forceinline Vec  operator <   (const Vec& l, const Vec& r) { return _mm_cmplt_ps(l, r); }
+__forceinline Vec  operator >   (const Vec& l, const Vec& r) { return _mm_cmpgt_ps(l, r); }
+__forceinline Vec  operator <=  (const Vec& l, const Vec& r) { return _mm_cmple_ps(l, r); }
+__forceinline Vec  operator >=  (const Vec& l, const Vec& r) { return _mm_cmpge_ps(l, r); }
+__forceinline Vec  operator ==  (const Vec& l, const Vec& r) { return _mm_cmpeq_ps(l, r); }
+__forceinline Vec  operator +   (const Vec& l, const float r) { return _mm_add_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator -   (const Vec& l, const float r) { return _mm_sub_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator *   (const Vec& l, const float r) { return _mm_mul_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator /   (const Vec& l, const float r) { return _mm_div_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec& operator +=  (Vec& l, const float r) { l = l + r; return l; }
+__forceinline Vec& operator -=  (Vec& l, const float r) { l = l - r; return l; }
+__forceinline Vec& operator *=  (Vec& l, const float r) { l = l * r; return l; }
+__forceinline Vec& operator /=  (Vec& l, const float r) { l = l / r; return l; }
+__forceinline Vec  operator &   (const Vec& l, const float r) { return _mm_and_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator |   (const Vec& l, const float r) { return _mm_or_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator ^   (const Vec& l, const float r) { return _mm_xor_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator <   (const Vec& l, const float r) { return _mm_cmplt_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator >   (const Vec& l, const float r) { return _mm_cmpgt_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator <=  (const Vec& l, const float r) { return _mm_cmple_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator >=  (const Vec& l, const float r) { return _mm_cmpge_ps(l, _mm_set1_ps(r)); }
+__forceinline Vec  operator ==  (const Vec& l, const float r) { return _mm_cmpeq_ps(l, _mm_set1_ps(r)); }
 
 #pragma endregion __m128 Operator Overloads
 

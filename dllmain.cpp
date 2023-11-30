@@ -13,6 +13,10 @@
 #include <Engine/Entity/MiscEntities.h>
 #include <EAAudioCore/plugins/GinsuPlayer.h>
 
+#include <fstream>
+#include <string>
+#include <shellapi.h>
+
 #include "util/memoryutils.h"
 #include "MinHook.h"
 #include <safetyhook.hpp>
@@ -49,9 +53,63 @@ void ApplyMiscPatches()
         *newForce = fb::VecMul(currentForce, fb::vec(speedMul));
     });
 
+    // hijack fb::ExecutionContext ctor to pass in more arguments
+    // Steam users end up with a launch command that's too long after launching from Frosty,
+    // so the solution is to just not have them enter commands through the launcher
+    // it's also one less thing users can mess up during installation ¯\_(ツ)_/¯
+    static SafetyHookMid midhook2{};
+    midhook2 = safetyhook::create_mid(reinterpret_cast<void*>(0x14016860D),
+        [](SafetyHookContext& ctx)
+    {
+        int argcOld = ctx.rdx;
+        char** argv = reinterpret_cast<char**>(ctx.r8);
+        std::ifstream commands("commands.txt");
+        std::string commandLine;
+        std::getline(commands, commandLine);
+        if (!commandLine.empty())
+        {
+            int argcNew;
+            LPWSTR* wArglist = CommandLineToArgvW(std::wstring(commandLine.begin(), commandLine.end()).c_str(), &argcNew);
+            if (wArglist)
+            {
+                int utfCharCount = 0;
+                for (int i = 0; i < argcNew; ++i)
+                {
+                    utfCharCount += WideCharToMultiByte(CP_UTF8, 0, wArglist[i], -1, NULL, 0, NULL, NULL);
+                }
+
+                // allocate space for the new arguments
+                static char** argvNew = (char**)malloc((argcOld + argcNew + 1) * sizeof(char*) + utfCharCount);
+                if (argvNew)
+                {
+                    // place old arg pointers into the beginning of the list
+                    for (int i = 0; i < argcOld; ++i)
+                    {
+                        argvNew[i] = argv[i];
+                    }
+
+                    // get start of string list
+                    char* argStrList = (char*)&argvNew[argcOld + argcNew + 1];
+                    for (int i = 0; i < argcNew; ++i)
+                    {
+                        // start after the old arg pointers
+                        argvNew[argcOld+i] = argStrList;
+                        // write string and advance position in list
+                        argStrList += WideCharToMultiByte(CP_UTF8, 0, wArglist[i], -1, argStrList, utfCharCount, NULL, NULL);
+                    }
+                    argvNew[argcOld + argcNew] = NULL;
+
+                    ctx.rdx = argcOld + argcNew;
+                    ctx.r8 = (uintptr_t)argvNew;
+
+                    LocalFree(wArglist);
+                }
+            }
+        }
+    });
+
 }
 
-//DWORD WINAPI Start(LPVOID lpParam)
 void InitHook()
 {
     uintptr_t game = (uintptr_t)GetModuleHandle(NULL);
