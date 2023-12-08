@@ -38,8 +38,8 @@ void ApplyMiscPatches()
     }
 
     // fix map UI cursor speed
-    static SafetyHookMid midhook1{};
-    midhook1 = safetyhook::create_mid(reinterpret_cast<void*>(0x1409AAAD5),
+    static SafetyHookMid uiCursorMidHook{};
+    uiCursorMidHook = safetyhook::create_mid(reinterpret_cast<void*>(0x1409AAAD5),
         [](SafetyHookContext& ctx)
     {
         const float dT = ctx.xmm10.f32[0];
@@ -53,12 +53,39 @@ void ApplyMiscPatches()
         *newForce = fb::VecMul(currentForce, fb::vec(speedMul));
     });
 
+    // fix procedural animation speed for rigid mesh entities
+    // hook fb::RigidMeshEntityRenderer::buildPrimitives
+    static SafetyHookMid rigidMeshProcAnimMidHook{};
+    rigidMeshProcAnimMidHook = safetyhook::create_mid(reinterpret_cast<void*>(0x1406AF293),
+        [](SafetyHookContext& ctx)
+    {
+        char* viewInfo = *reinterpret_cast<char**>(ctx.r12 + 0x8);
+        const float simDeltaTime = *reinterpret_cast<float*>(viewInfo + 0x210);
+        const float dT30 = 1.f / 30.f;
+        // adjust procedural animation local time with time scale from 30 FPS delta time
+        ctx.xmm2.f32[0] *= (simDeltaTime / dT30);
+    });
+
+    // fix procedural animation speed for static mesh entities
+    // hook fb::StaticMeshEntityRenderer::buildPrimitives
+    static SafetyHookMid staticMeshProcAnimMidHook{};
+    staticMeshProcAnimMidHook = safetyhook::create_mid(reinterpret_cast<void*>(0x14029AD4A),
+        [](SafetyHookContext& ctx)
+    {
+        char* builder = *reinterpret_cast<char**>(ctx.rsp + 0x50);
+        char* viewInfo = *reinterpret_cast<char**>(builder + 0x8);
+        const float simDeltaTime = *reinterpret_cast<float*>(viewInfo + 0x210);
+        const float dT30 = 1.f / 30.f;
+        // adjust procedural animation local time with time scale from 30 FPS delta time
+        ctx.xmm5.f32[0] *= (simDeltaTime / dT30);
+    });
+
     // hijack fb::ExecutionContext ctor to pass in more arguments
     // Steam users end up with a launch command that's too long after launching from Frosty,
     // so the solution is to just not have them enter commands through the launcher
     // it's also one less thing users can mess up during installation ¯\_(ツ)_/¯
-    static SafetyHookMid midhook2{};
-    midhook2 = safetyhook::create_mid(reinterpret_cast<void*>(0x14016860D),
+    static SafetyHookMid executionContextMidHook{};
+    executionContextMidHook = safetyhook::create_mid(reinterpret_cast<void*>(0x14016860D),
         [](SafetyHookContext& ctx)
     {
         int argcOld = ctx.rdx;
