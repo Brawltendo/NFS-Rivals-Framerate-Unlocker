@@ -10,10 +10,22 @@ struct LinearTransform;
 class IRaceVehicle
 {
 public:
+	float brake()
+	{
+		typedef float(__fastcall* native)(IRaceVehicle*);
+		return reinterpret_cast<native>(__vftable[25])(this);
+	}
+
 	float rpm()
 	{
 		typedef float(__fastcall* native)(IRaceVehicle*);
 		return reinterpret_cast<native>(__vftable[175])(this);
+	}
+
+	float getForwardSpeed()
+	{
+		typedef float(__fastcall* native)(IRaceVehicle*);
+		return reinterpret_cast<native>(__vftable[254])(this);
 	}
 
 	LinearTransform& localGroundTransform()

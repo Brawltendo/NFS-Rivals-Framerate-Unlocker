@@ -6,6 +6,7 @@
 #include <Race/Client/Vehicle/Components/ClientFxComponent.h>
 #include <Race/Client/Vehicle/Components/ClientRaceVehicleComponent.h>
 #include <Race/Client/Vehicle/Components/ClientRaceVehicleComponentSimulation.h>
+#include <Race/Client/Vehicle/Components/ClientAnimationComponent.h>
 #include <Engine/Physics/Vehicle/EAGR/WheelNFS.h>
 #include <Race/Client/Vehicle/Components/ClientRaceWheelComponentSimulation.h>
 #include <Race/Client/UI/Entities/Screen/ClientUIScreenEffectEntity.h>
@@ -143,6 +144,7 @@ void InitHook()
     MH_Initialize();
     fb::CinebotCamera::ApplyPatches();
     fb::ClientAnimatedDriverComponent::ApplyPatches();
+    fb::ClientAnimationComponent::ApplyPatches();
     fb::ClientRaceLightComponent::ApplyPatches();
     fb::ClientFxComponent::ApplyPatches();
     fb::ClientRaceVehicleComponent::ApplyPatches();

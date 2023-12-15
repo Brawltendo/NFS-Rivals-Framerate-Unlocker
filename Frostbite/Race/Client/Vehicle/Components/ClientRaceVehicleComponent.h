@@ -55,6 +55,7 @@ public:
 
 	const LinearTransform& getInterpolatedTransform() { return m_interpolatedTransform.get(); }
 	const LinearTransform& getInterpolatedBodyTransform() { return m_interpolatedBodyTransform; }
+	IRaceVehicle* getVehiclePhysics() { return m_vehiclePhysics; }
 
 private:
 	void applyInterpolation(float interpolationFactor);

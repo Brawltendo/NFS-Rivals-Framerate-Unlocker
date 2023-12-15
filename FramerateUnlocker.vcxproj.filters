@@ -228,6 +228,12 @@
     <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientFxComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientAnimationComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Frostbite\Race\Common\Vehicle\Components\AnimationComponentData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -294,6 +300,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientFxComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientAnimationComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

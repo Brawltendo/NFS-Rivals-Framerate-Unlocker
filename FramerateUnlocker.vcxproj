@@ -220,6 +220,7 @@
     <ClInclude Include="Frostbite\Race\Client\UI\Entities\Screen\ClientUIScreenEffectEntity.h" />
     <ClInclude Include="Frostbite\Race\Client\Vehicle\ClientRaceVehicleEntity.h" />
     <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientAnimatedDriverComponent.h" />
+    <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientAnimationComponent.h" />
     <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientFxComponent.h" />
     <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceLightComponent.h" />
     <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceVehicleComponent.h" />
@@ -227,6 +228,7 @@
     <ClInclude Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceWheelComponentSimulation.h" />
     <ClInclude Include="Frostbite\Race\Client\Weapon\ClientVehicleWeaponEntity.h" />
     <ClInclude Include="Frostbite\Race\Common\Core\Proxy\ProxyPropertyWriter.h" />
+    <ClInclude Include="Frostbite\Race\Common\Vehicle\Components\AnimationComponentData.h" />
     <ClInclude Include="Frostbite\Race\Common\Weapon\VehicleWeaponEntityData.h" />
     <ClInclude Include="Frostbite\Race\Common\Weapon\VehicleWeaponEntityDataDefs.h" />
     <ClInclude Include="Frostbite\Race\Common\Weapon\VehicleWeaponType.h" />
@@ -251,6 +253,7 @@
     <ClCompile Include="Frostbite\External\EA\EAAudioCore\source\plugins\GinsuPlayer.cpp" />
     <ClCompile Include="Frostbite\Race\Client\UI\Entities\Screen\ClientUIScreenEffectEntity.cpp" />
     <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientAnimatedDriverComponent.cpp" />
+    <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientAnimationComponent.cpp" />
     <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientFxComponent.cpp" />
     <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceLightComponent.cpp" />
     <ClCompile Include="Frostbite\Race\Client\Vehicle\Components\ClientRaceVehicleComponent.cpp" />
